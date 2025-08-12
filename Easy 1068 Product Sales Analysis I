@@ -1,0 +1,10 @@
+#Write a solution to report the product_name, year, and price for each sale_id in the Sales table.
+Return the resulting table in any order.
+
+# Reasoning: Product ID is a primary key for Product and present in the Sales table, thus able to be joined. 
+However as sale_id is the condition on which the product details must be returned, the sale table will be the 
+table product is joined on to ensure all sale_id are present.
+
+SELECT product_name, year, price
+FROM Sales s
+LEFT JOIN Product p ON s.product_id = p.product_id

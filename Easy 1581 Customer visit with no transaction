@@ -1,0 +1,12 @@
+# Write a solution to report the product_name, year, and price for each sale_id in the Sales table.
+
+#Reasoning The tables must be joined on the condition that the transaction id is null. We return the customer id
+from visits and transaction id from transactions counting only transactions_id that are null as 1.
+The non- transaction cases must be grouped by their customer id.
+
+SELECT v.customer_id, 
+    COUNT(CASE WHEN t.transaction_id IS NULL THEN 1 END) AS count_no_trans
+FROM Visits v
+LEFT JOIN Transactions t ON v.visit_id = t.visit_id 
+WHERE t.transaction_id IS NULL
+GROUP BY v.customer_id;

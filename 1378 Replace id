@@ -1,0 +1,14 @@
+ #Write a solution to show the unique ID of each user, If a user does not have a unique ID replace just show null. Return the result table in any order.
+# SQL Case expression - when the condition is true the unique-id is null, then null will be printed,  if this is not true the unique_id will be returned in 
+the column.
+# SQL Left join, the Employee table to ensure all employees are included but if a match is not found for said employee unique_id will be passed as null.
+
+SELECT 
+    (CASE 
+        WHEN unique_id IS NULL 
+        THEN null
+        ELSE unique_id
+    END) AS unique_id, name
+FROM Employees em
+LEFT JOIN EmployeeUNI eu 
+ON em.id = eu.id;
